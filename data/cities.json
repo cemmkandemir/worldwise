@@ -1,0 +1,28 @@
+{
+  "cities": [
+    {
+      "cityName": "Bucuresti",
+      "country": "Romania",
+      "emoji": "emoji",
+      "date": "2023-12-19T18:38:32.362Z",
+      "notes": "denmee\n",
+      "position": {
+        "lat": "44.42830545997294",
+        "lng": "26.101455688476566"
+      },
+      "id": 545655
+    },
+    {
+      "cityName": "Castres",
+      "country": "France",
+      "emoji": "emoji",
+      "date": "2023-12-23T20:35:08.494Z",
+      "notes": "",
+      "position": {
+        "lat": "43.644025847699496",
+        "lng": "2.2631835937500004"
+      },
+      "id": 545656
+    }
+  ]
+}
