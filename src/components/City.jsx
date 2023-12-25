@@ -1,9 +1,13 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import styles from "./City.module.css";
 import { useEffect } from "react";
 import { useCities } from "../contexts/CititesContext";
 import Spinner from "./Spinner";
 import ButtonBack from "./ButtonBack";
+import Flag from "./Flag";
+import Button from "./Button";
+
+import { useUrlPosition } from "../hooks/useUrlPosition";
 
 const formatDate = (date) =>
   new Intl.DateTimeFormat("en", {
@@ -15,7 +19,8 @@ const formatDate = (date) =>
 
 function City() {
   const { id } = useParams();
-  const { getCity, currentCity, flagemojiToPNG, isLoading } = useCities();
+  const { getCity, currentCity, isLoading } = useCities();
+  const { cityName, emoji, date, notes } = currentCity;
 
   useEffect(
     function () {
@@ -23,15 +28,18 @@ function City() {
     },
     [id, getCity]
   );
-  const { cityName, emoji, date, notes } = currentCity;
 
+  console.log(currentCity);
   if (isLoading) return <Spinner />;
   return (
     <div className={styles.city}>
       <div className={styles.row}>
         <h6>City name</h6>
         <h3>
-          <span>flag</span> {cityName}
+          <span>
+            <Flag emoji={emoji} />
+          </span>{" "}
+          {cityName}
         </h3>
       </div>
 
@@ -58,7 +66,7 @@ function City() {
         </a>
       </div>
 
-      <div>
+      <div className={styles.buttons}>
         <ButtonBack />
       </div>
     </div>

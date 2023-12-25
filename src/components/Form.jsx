@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 import styles from "./Form.module.css";
 
@@ -23,6 +24,7 @@ function Form() {
   const [isLoadingGeocoding, setIsLoadingGeocoding] = useState(false);
   const [cityName, setCityName] = useState("");
   const [country, setCountry] = useState("");
+  const [countryCode, setCountryCode] = useState("");
   const [date, setDate] = useState(new Date());
   const [notes, setNotes] = useState("");
   const [geocodingError, setGeocodingError] = useState("");
@@ -49,6 +51,7 @@ function Form() {
 
           setCityName(data.city || data.locality || "");
           setCountry(data.countryName);
+          setCountryCode(data.countryCode);
         } catch (err) {
           setGeocodingError(err.message);
         } finally {
@@ -68,7 +71,7 @@ function Form() {
     const newCity = {
       cityName,
       country,
-      emoji: "emoji",
+      emoji: countryCode,
       date,
       notes,
       position: { lat, lng },

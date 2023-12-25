@@ -1,20 +1,31 @@
-import { Outlet } from "react-router-dom";
-import AppNav from "./AppNav";
-import Logo from "./Logo";
 import styles from "./Sidebar.module.css";
-function Sidebar() {
-  return (
-    <div className={styles.sidebar}>
-      <Logo />
-      <AppNav />
+import Logo from "./Logo.jsx";
+import AppNav from "./AppNav.jsx";
+import { Outlet, useNavigate } from "react-router-dom";
+import Footer from "./Footer.jsx";
+import { HiXMark } from "react-icons/hi2";
 
-      <Outlet />
-      <footer className={styles.footer}>
-        <p className={styles.copyright}>
-          &copy; Copyright {new Date().getFullYear()} by WorldWise Inc.
-        </p>
-      </footer>
-    </div>
+function Sidebar({ isSidebarOpen, setIsSidebarOpen }) {
+  const navigate = useNavigate();
+
+  return (
+    <aside className={`${isSidebarOpen ? styles["sidebar-open"] : ""}`}>
+      <div className={styles.sidebar}>
+        <Logo className={styles.logo} />
+        <AppNav />
+        <Outlet />
+        <Footer />
+        <button
+          className={styles["sidebar-icon"]}
+          onClick={() => {
+            setIsSidebarOpen(false);
+            navigate("/app/cities");
+          }}
+        >
+          <HiXMark />
+        </button>
+      </div>
+    </aside>
   );
 }
 

@@ -24,3 +24,15 @@
   flex-direction: column;
   gap: 0.5rem;
 }
+@media (max-width: 64em) {
+  .login {
+    margin: 0;
+    height: 100vh;
+  }
+}
+
+@media (max-width: 48em) {
+  .form {
+    width: 100%;
+  }
+}

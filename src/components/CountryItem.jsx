@@ -1,11 +1,12 @@
-import { useCities } from "../contexts/CititesContext";
 import styles from "./CountryItem.module.css";
+import Flag from "./Flag";
 
 function CountryItem({ country }) {
-  const { flagemojiToPNG } = useCities();
   return (
     <li className={styles.countryItem}>
-      <span>{flagemojiToPNG(country.emoji)}</span>
+      <span>
+        <Flag emoji={country.emoji} />
+      </span>
       <span>{country.country}</span>
     </li>
   );

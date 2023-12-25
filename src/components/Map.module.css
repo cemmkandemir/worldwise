@@ -5,11 +5,27 @@
   position: relative;
 }
 
+.mapContainer button {
+  bottom: unset;
+  left: unset;
+
+  top: 10rem;
+  right: 5rem;
+}
+
+@media (max-width: 48em) {
+  .mapContainer button {
+    transform: translateX(50%);
+    right: 50%;
+  }
+}
+
 .map {
   height: 100%;
 }
 
 /*Leaflet ile gelen classlar. random class isimleri istemediğimiz için :global kullandık*/
+
 :global(.leaflet-popup .leaflet-popup-content-wrapper) {
   background-color: var(--color-dark--1);
   color: var(--color-light--2);

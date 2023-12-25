@@ -32,3 +32,16 @@
   text-transform: uppercase;
   cursor: pointer;
 }
+@media (max-width: 64em) {
+  .user {
+    top: 1.8rem;
+    right: 7.2rem;
+  }
+}
+
+@media (max-width: 48em) {
+  .user {
+    right: 50%;
+    transform: translateX(50%);
+  }
+}

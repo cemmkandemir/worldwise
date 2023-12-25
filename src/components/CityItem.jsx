@@ -2,6 +2,9 @@ import { Link } from "react-router-dom";
 
 import styles from "./CityItem.module.css";
 import { useCities } from "../contexts/CititesContext";
+import ReactCountriesFlags from "react-countries-flags";
+import Flag from "./Flag";
+
 const formatDate = (date) =>
   new Intl.DateTimeFormat("en", {
     day: "numeric",
@@ -10,8 +13,8 @@ const formatDate = (date) =>
     weekday: "long",
   }).format(new Date(date));
 function CityItem({ city }) {
-  const { flagemojiToPNG, currentCity, deleteCity } = useCities();
-  const { cityName, emoji, date, id, position } = city;
+  const { currentCity, deleteCity } = useCities();
+  const { cityName, date, id, position, emoji } = city;
 
   function handleClick(e) {
     e.preventDefault();
@@ -26,8 +29,8 @@ function CityItem({ city }) {
         }`}
         to={`${id}?lat=${position.lat}&lng=${position.lng}`}
       >
-        {" "}
-        {/* <span className={styles.emoji}>{flagemojiToPNG(emoji)}</span> */}
+        <Flag emoji={emoji} />
+
         <h3 className={styles.name}>{cityName}</h3>
         <time className={styles.date}>({formatDate(date)})</time>
         <button className={styles.deleteBtn} onClick={handleClick}>
